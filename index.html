@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <style>
+        body{
+            background-color: rgb(71, 67, 67);
+            margin-top: 40px;
+	        margin-left: 25%;
+	        margin-right: 25%;
+	        border:10px solid #cec1c1;
+	    
+	        padding : 20px;
+             max-width: 1000px;
+             height: 600px;
+	    }
+        input{
+           width: 200px;
+           height: 25px;
+        }
+        
+       
+    </style>
+</head>
+<body>
+    
+    <div style="position : absolute;top:190px;right:550px; font-size: 30px;color: white;">
+    <label>Enter the time : </label>    
+    <input type="number" name = "time" id="time" >
+    <button onclick="timer()">Start</button>
+    </div>
+    <div style="position:absolute;top:150px;right:650px;color: white;font-size:150px; font-weight: bolder;  ">
+    <p id = 'countdown'></p>
+    </div>
+    <script type="text/javascript">
+        function timer()
+        {
+            
+            var t = document.getElementById("time").value;
+            t = Number(t);
+
+            const startingMinutes = t;
+            let time = startingMinutes * 60;
+            const countdownEl = document.getElementById('countdown');
+
+            setInterval(updateCountdown , 1000);
+            function updateCountdown(){
+                const minutes = Math.floor(time/60);
+                let seconds = time%60;
+                
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                if(minutes >=0 && seconds >=0)
+                    countdownEl.innerHTML = `${minutes}:${seconds}`;
+                time--; 
+            }
+
+            
+            
+        }
+    </script>
+    
+</body>
+</html>
